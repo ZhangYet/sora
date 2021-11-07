@@ -9,6 +9,9 @@
 ;; load config
 (add-to-list 'load-path "~/.emacs.d/rc")
 (require 'basic)
+(require 'rc-org)
+
+;; auto generate
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
