@@ -1,0 +1,2 @@
+# sora
+my emacs config
