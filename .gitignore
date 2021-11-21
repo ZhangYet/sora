@@ -15,3 +15,6 @@ elpa/*
 
 # History
 transient/*
+
+# Autocomplete
+ac-comphist.dat
