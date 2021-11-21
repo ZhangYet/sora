@@ -23,4 +23,17 @@
   :ensure t
   :bind ("C-x z" . neotree-toggle))
 
+;; autocomplete
+;; auto complete
+(use-package auto-complete
+  :ensure t)
+(setq ac-ignore-case nil)
+(add-hook 'emacs-lisp-mode-hook (lambda ()
+				  (auto-complete-mode t)
+				  (setq ac-sources (append ac-sources '(ac-source-functions)))))
+(use-package company
+  :ensure t
+  :init (add-hook 'after-init-hook 'global-company-mode))
+(ac-config-default)
+
 (provide 'basic)
