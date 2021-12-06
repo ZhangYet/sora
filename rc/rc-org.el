@@ -90,5 +90,11 @@
 (advice-add 'org-agenda-files :filter-return #'dynamic-agenda-files-advice)
 (add-to-list 'org-after-todo-state-change-hook 'update-dynamic-agenda-hook t)
 
+;; org-roam
+(use-package org-roam
+  :ensure t
+  :init
+  (setq org-roam-v2-ack t))
+
 (provide 'rc-org)
 ;;;
