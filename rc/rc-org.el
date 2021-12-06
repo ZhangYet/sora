@@ -85,7 +85,7 @@
                                    (add-to-list 'dynamic-agenda-files file)))))))
 
 (defun dynamic-agenda-files-advice (orig-val)
-  (union orig-val dynamic-agenda-files :test #'equal))
+  (cl-union orig-val dynamic-agenda-files :test #'equal))
 
 (advice-add 'org-agenda-files :filter-return #'dynamic-agenda-files-advice)
 (add-to-list 'org-after-todo-state-change-hook 'update-dynamic-agenda-hook t)
