@@ -1,6 +1,23 @@
 ;;; rc-org.el ---
 (require 'use-package)
 
+(defvar todos
+  '((sequence "FLEETING" "ORGANIZING" "|" "PERMANENT" "SKIP")
+    (sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "GIVEUP")))
+
+(defvar todo-index 0)
+(defvar current-todo-keywords nil)
+
+(defun switch-todo-keywords()
+  (interactive)
+  (setq todo-index (+ 1 todo-index))
+  (setq current-todo-keywords
+	(car (nthcdr (% todo-index 2) todos)))
+  (message "current todo keywords %s" current-todo-keywords))
+
+(switch-todo-keywords)
+
+;; org itself
 (use-package org
   :ensure t
   :init
@@ -9,7 +26,8 @@
 	  (sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "GIVEUP")))
   :bind (("C-c l" . 'org-store-link)
 	 ("C-c a" . 'org-agenda)
-	 ("C-c c" . 'org-capture)))
+	 ("C-c c" . 'org-capture)
+	 ("C-c s" . 'switch-todo-keywords)))
 
 (require 'ox-md nil t)
 
