@@ -108,6 +108,15 @@
 (advice-add 'org-agenda-files :filter-return #'dynamic-agenda-files-advice)
 (add-to-list 'org-after-todo-state-change-hook 'update-dynamic-agenda-hook t)
 
+(defvar passenger-home
+  (getenv "PASSENGER_HOME")
+  "the location of passenger repo")
+
+(if passenger-home
+    (custom-set-variables '(org-agenda-files
+			    (directory-files-recursively (symbol-value 'passenger-home) "\\.org$"))))
+
+
 ;; org-roam
 (use-package org-roam
   :ensure t
