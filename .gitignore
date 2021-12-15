@@ -22,3 +22,6 @@ ac-comphist.dat
 # Org-roam
 .org-id-locations
 org-roam.db
+
+# customize
+custom.el
