@@ -13,6 +13,7 @@
 (add-to-list 'load-path "~/.emacs.d/rc")
 (require 'basic)
 (require 'rc-org)
+(require 'rc-file-management)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)

@@ -30,3 +30,6 @@ custom.el
 network-security.data
 server/*
 bookmarks
+
+# cache
+.cache/*

@@ -18,11 +18,6 @@
   :config
   (load-theme 'moe-dark t))
 
-;; neotree
-(use-package neotree
-  :ensure t
-  :bind ("C-x z" . neotree-toggle))
-
 ;; autocomplete
 ;; auto complete
 (use-package auto-complete

@@ -117,11 +117,5 @@
 			    (directory-files-recursively (symbol-value 'passenger-home) "\\.org$"))))
 
 
-;; org-roam
-(use-package org-roam
-  :ensure t
-  :init
-  (setq org-roam-v2-ack t))
-
 (provide 'rc-org)
 ;;;
