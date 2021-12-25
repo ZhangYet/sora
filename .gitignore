@@ -25,3 +25,8 @@ org-roam.db
 
 # customize
 custom.el
+
+# other data
+network-security.data
+server/*
+bookmarks
