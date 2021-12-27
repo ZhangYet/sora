@@ -29,6 +29,10 @@
 	 ("C-c c" . 'org-capture)
 	 ("C-c s" . 'switch-todo-keywords)))
 
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
+(setq fill-column 120)
+
+
 (require 'ox-md nil t)
 
 (defun org-begin-template ()
