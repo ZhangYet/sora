@@ -120,6 +120,14 @@
     (custom-set-variables '(org-agenda-files
 			    (directory-files-recursively (symbol-value 'passenger-home) "\\.org$"))))
 
+(defun auto-clock()
+  (if (string-equal org-state "IN-PROGRESS")
+      (org-clock-in)
+    (if (org-clock-is-active)
+	(org-clock-out)
+      (message "there is no clock"))))
+
+(add-to-list 'org-after-todo-state-change-hook 'auto-clock t)
 
 (provide 'rc-org)
 ;;;
