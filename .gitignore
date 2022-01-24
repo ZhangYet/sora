@@ -33,3 +33,6 @@ bookmarks
 
 # cache
 .cache/*
+
+# eshell
+eshell/*
