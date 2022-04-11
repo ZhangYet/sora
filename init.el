@@ -14,6 +14,7 @@
 (require 'basic)
 (require 'rc-org)
 (require 'rc-file-management)
+(require 'rc-lsp)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
