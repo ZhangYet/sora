@@ -39,3 +39,9 @@ eshell/*
 
 # eww
 url/*
+
+# lsp
+.lsp-session-v1
+
+# don't know what
+.dap-breakpoints
