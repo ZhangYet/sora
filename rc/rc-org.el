@@ -129,5 +129,9 @@
 
 (add-to-list 'org-after-todo-state-change-hook 'auto-clock t)
 
+(use-package ox-hugo
+  :ensure t
+  :after ox)
+
 (provide 'rc-org)
 ;;;
