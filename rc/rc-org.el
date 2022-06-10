@@ -29,8 +29,8 @@
 	 ("C-c c" . 'org-capture)
 	 ("C-c s" . 'switch-todo-keywords)))
 
-(add-hook 'org-mode-hook 'turn-on-auto-fill)
-(setq fill-column 120)
+;; (add-hook 'org-mode-hook 'turn-on-auto-fill)
+;; (setq fill-column 120)
 
 
 (require 'ox-md nil t)
@@ -128,6 +128,10 @@
       (message "there is no clock"))))
 
 (add-to-list 'org-after-todo-state-change-hook 'auto-clock t)
+
+(use-package ox-hugo
+  ;ensure t
+  :after ox)
 
 (provide 'rc-org)
 ;;;
