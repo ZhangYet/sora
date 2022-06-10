@@ -42,4 +42,10 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
+;; ace-window
+(use-package avy
+  :ensure t
+  :bind (("C-o" . 'avy-goto-char)
+	 ("M-o" . 'avy-goto-char-timer)))
+
 (provide 'basic)
