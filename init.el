@@ -14,8 +14,9 @@
 (require 'basic)
 (require 'rc-org)
 (require 'rc-file-management)
+(require 'rc-lsp)
 (if (file-exists-p "/usr/bin/clangd-12")
-    (require 'rc-c)
+    ; (require 'rc-c)
   (message "install clangd-12 to enable c lsp"))
 
 (setq custom-file "~/.emacs.d/custom.el")
