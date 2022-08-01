@@ -1,3 +1,10 @@
+;; init use-package
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+(eval-when-compile
+  ;; Following line is not needed if use-package.el is in ~/.emacs.d
+  (add-to-list 'load-path (concat (file-name-directory user-init-file) "use-package"))
+  (require 'use-package))
+
 ;; melpa
 (require 'package)
 (add-to-list 'package-archives
@@ -15,5 +22,5 @@
 (require 'rc-org)
 (require 'rc-file-management)
 
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
+;; (setq custom-file "~/.emacs.d/custom.el")
+;; (load custom-file)
