@@ -21,6 +21,20 @@
 (require 'basic)
 (require 'rc-org)
 (require 'rc-file-management)
+(require 'rc-pinyin)
 
 ;; (setq custom-file "~/.emacs.d/custom.el")
 ;; (load custom-file)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(pyim-basedict pyim treemacs-projectile moe-theme markdown-mode magit company auto-complete)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
