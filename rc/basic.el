@@ -48,4 +48,6 @@
   :bind (("C-o" . 'avy-goto-char)
 	 ("M-o" . 'avy-goto-char-timer)))
 
+(setq column-number-mode t)
+(setq visual-line-mode t)
 (provide 'basic)
