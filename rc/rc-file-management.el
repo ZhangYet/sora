@@ -7,8 +7,8 @@
 	("M-0" . treemacs-select-window)
 	("C-x z" . treemacs)
 	("C-x t C-n" . treemacs-next-project)
-	("C-x t C-p" . treemacs-previous-project)))
-
+	("C-x t C-p" . treemacs-previous-project)
+	("C-x t C-f" . treemacs-create-file)))
 
 (use-package treemacs-projectile
   :after (treemacs projectile)
