@@ -50,4 +50,10 @@
 
 (setq column-number-mode t)
 (setq visual-line-mode t)
+
+;; show full file path
+(setq-default mode-line-buffer-identification
+              (list 'buffer-file-name
+                    (propertized-buffer-identification "%12f")
+                    (propertized-buffer-identification "%12b")))
 (provide 'basic)
