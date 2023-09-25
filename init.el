@@ -9,13 +9,17 @@
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
+(add-to-list 'load-path "~/.emacs.d/lspbridge")
+(require 'lsp-bridge)
+
 ;; load config
 (add-to-list 'load-path "~/.emacs.d/rc")
 (require 'basic)
 (require 'rc-c)
 (require 'rc-org)
 (require 'rc-file-management)
-(require 'rc-lsp)
+(require 'rc-go)
+;; (require 'rc-lsp)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
