@@ -56,4 +56,8 @@
               (list 'buffer-file-name
                     (propertized-buffer-identification "%12f")
                     (propertized-buffer-identification "%12b")))
+
+;; keybind
+(global-set-key (kbd "M-k") 'windmove-right)
+(global-set-key (kbd "M-j") 'windmove-left)
 (provide 'basic)
