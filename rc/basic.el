@@ -60,4 +60,13 @@
 ;; keybind
 (global-set-key (kbd "M-k") 'windmove-right)
 (global-set-key (kbd "M-j") 'windmove-left)
+
+;; nov for reading epub
+(use-package nov
+ :after esxml
+ :straight (nov :type git :host nil :repo "https://depp.brause.cc/nov.el.git"))
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
+;; trim space
+(add-hook 'write-file-hooks 'delete-trailing-whitespace nil t)
 (provide 'basic)
