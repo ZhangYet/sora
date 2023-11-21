@@ -66,7 +66,12 @@
  :after esxml
  :straight (nov :type git :host nil :repo "https://depp.brause.cc/nov.el.git"))
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+(setq nov-text-width 120)
+;; xclip
+(use-package xclip
+  :ensure t)
+(xclip-mode 1)
 
 ;; trim space
-(add-hook 'write-file-hooks 'delete-trailing-whitespace nil t)
+(add-hook 'write-file-hooks 'delete-trailing-whitespace nil t)                                                                                                           
 (provide 'basic)
