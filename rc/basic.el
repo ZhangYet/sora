@@ -73,5 +73,11 @@
 (xclip-mode 1)
 
 ;; trim space
-(add-hook 'write-file-hooks 'delete-trailing-whitespace nil t)                                                                                                           
+(add-hook 'write-file-hooks 'delete-trailing-whitespace nil t)
+
+;; rss
+(use-package elfeed
+  :ensure t
+  :bind (("C-x w" . 'elfeed)))
+
 (provide 'basic)
