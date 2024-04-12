@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<opml version="1.0">
+  <head>
+    <title>Elfeed Export</title>
+  </head>
+  <body>
+    <outline xmlUrl="https://www.brendangregg.com/blog/rss.xml" title="Brendan Gregg&apos;s Blog"/>
+    <outline xmlUrl="https://research.swtch.com/feed.atom" title="research!rsc"/>
+    <outline xmlUrl="https://nullprogram.com/feed/" title="null program"/>
+    <outline xmlUrl="https://shadowquark.github.io/atom.xml" title="卮言日出"/>
+    <outline xmlUrl="https://blog.oddbit.com/rss.xml" title="blog.oddbit.com"/>
+    <outline xmlUrl="https://nakryiko.com/atom.xml" title="Andrii Nakryiko&apos;s Blog"/>
+    <outline xmlUrl="https://www.cyhone.com/atom.xml" title="编程沉思录"/>
+    <outline xmlUrl="https://blog.codingnow.com/atom.xml" title="云风的 BLOG"/>
+    <outline xmlUrl="https://1byte.io/rss.xml" title="1 Byte"/>
+    <outline xmlUrl="http://weiwuhui.com/feed" title="扯氮集"/>
+    <outline xmlUrl="https://lutaonan.com/rss.xml" title="Randy&apos;s Blog"/>
+    <outline xmlUrl="https://feeds.pub/feed/http%3A%2F%2Ffeeds.feedburner.com%2Fyuguo" title=""/>
+    <outline xmlUrl="https://feeds.pub/feed/https%3A%2F%2Fwww.developerastrid.com%2Findex.xml" title=""/>
+    <outline xmlUrl="https://geekplux.com/cn-feed.xml" title="GeekPlux"/>
+  </body>
+</opml>
