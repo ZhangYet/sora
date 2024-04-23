@@ -4,6 +4,7 @@
     <title>Elfeed Export</title>
   </head>
   <body>
+    <outline xmlUrl="https://feedx.net/rss/wsj.xml" title="华尔街日报"/>
     <outline xmlUrl="https://www.brendangregg.com/blog/rss.xml" title="Brendan Gregg&apos;s Blog"/>
     <outline xmlUrl="https://research.swtch.com/feed.atom" title="research!rsc"/>
     <outline xmlUrl="https://nullprogram.com/feed/" title="null program"/>
