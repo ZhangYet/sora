@@ -1,5 +1,5 @@
 ;; linum and auto pair
-(global-linum-mode t)
+(display-line-numbers-mode)
 (electric-pair-mode t)
 
 (require 'use-package)
@@ -62,9 +62,10 @@
 (global-set-key (kbd "M-j") 'windmove-left)
 
 ;; nov for reading epub
-(use-package nov
- :after esxml
- :straight (nov :type git :host nil :repo "https://depp.brause.cc/nov.el.git"))
+;;(use-package nov
+;; :after esxml
+;; :straight (nov :type git :host nil :repo "https://depp.brause.cc/nov.el.git"))
+
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 (setq nov-text-width 120)
 ;; xclip
