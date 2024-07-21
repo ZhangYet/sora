@@ -7,12 +7,14 @@
 ;; magit
 (use-package magit
   :ensure t
+  :pin melpa
   :bind ("C-x g" . magit-status))
 
 ;; theme
 (use-package moe-theme 
   :ensure t
   :load-path "themes"
+  :pin melpa
   :init
   (setq moe-theme-highlight-buffer-id t)
   :config
@@ -21,13 +23,15 @@
 ;; autocomplete
 ;; auto complete
 (use-package auto-complete
-  :ensure t)
+  :ensure t
+  :pin melpa)
 (setq ac-ignore-case nil)
 (add-hook 'emacs-lisp-mode-hook (lambda ()
 				  (auto-complete-mode t)
 				  (setq ac-sources (append ac-sources '(ac-source-functions)))))
 (use-package company
   :ensure t
+  :pin melpa
   :init (add-hook 'after-init-hook 'global-company-mode))
 (ac-config-default)
 

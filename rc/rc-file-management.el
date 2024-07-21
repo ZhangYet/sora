@@ -2,6 +2,7 @@
 (use-package treemacs
   :ensure t
   :defer t
+  :pin melpa
   :bind
   (:map global-map
 	("M-0" . treemacs-select-window)

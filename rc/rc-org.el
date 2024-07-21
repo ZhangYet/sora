@@ -20,6 +20,7 @@
 ;; org itself
 (use-package org
   :ensure t
+  :pin melpa-stable
   :init
   (setq org-todo-keywords
 	'((sequence "FLEETING" "ORGANIZING" "|" "PERMANENT" "SKIP")

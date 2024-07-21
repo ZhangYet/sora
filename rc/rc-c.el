@@ -1,6 +1,7 @@
 ;;; rc-c.el ---
 (use-package ggtags
-  :ensure t)
+  :ensure t
+  :pin melpa-stable)
 
 (add-hook 'c-mode-common-hook
 	  (lambda ()
