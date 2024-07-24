@@ -44,3 +44,5 @@ url/*
 .lsp-session-v1
 projectile-bookmarks.eld
 tramp
+
+straight/*
