@@ -15,7 +15,8 @@
 (require 'rc-c)
 (require 'rc-org)
 (require 'rc-file-management)
-(require 'rc-lsp)
+(when (eq system-type 'gnu/linux)
+  (require 'rc-lsp))
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)

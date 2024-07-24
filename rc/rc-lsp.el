@@ -1,13 +1,17 @@
 ;;; rc-lsp.el ---
 (require 'use-package)
 
-(use-package lsp-mode
+(use-package yasnippet
   :init
-  (setq lsp-keymap-prefix "C-c l")
-  :commands lsp-mode
-  :hook
-  (sh-mode . lsp)
-  (lsp-after-open-hook . lsp-origami-try-enable))
+  (yas-global-mode 1)
+  :ensure t)
+
+(add-to-list 'load-path "~/.emacs.d/rc/lsp-bridge")
+
+(require 'lsp-bridge)
+(global-lsp-bridge-mode)
+
+(require 'rc-go)
 
 (provide 'rc-lsp)
 ;;; 
