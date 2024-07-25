@@ -1,5 +1,5 @@
 ;; linum and auto pair
-(display-line-numbers-mode)
+(global-display-line-numbers-mode 1)
 (electric-pair-mode t)
 
 (require 'use-package)
