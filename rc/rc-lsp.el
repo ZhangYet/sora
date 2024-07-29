@@ -3,7 +3,8 @@
 
 (use-package eglot
   :hook
-  (go-mode . eglot-ensure))
+  (go-mode . eglot-ensure)
+  (python-mode . eglot-ensure))
 
 (provide 'rc-lsp)
 ;;; 

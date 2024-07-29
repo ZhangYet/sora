@@ -33,6 +33,7 @@
 (require 'rc-file-management)
 (require 'rc-lsp)
 (require 'rc-go)
+(require 'rc-python)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
