@@ -1,5 +1,4 @@
-;; linum and auto pair
-(display-line-numbers-mode t)
+;; auto pair
 (electric-pair-mode t)
 
 (require 'use-package)
@@ -11,7 +10,7 @@
   :bind ("C-x g" . magit-status))
 
 ;; theme
-(use-package moe-theme 
+(use-package moe-theme
   :ensure t
   :load-path "themes"
   :pin melpa
@@ -84,5 +83,17 @@
 (use-package elfeed
   :ensure t
   :bind (("C-x w" . 'elfeed)))
+
+;; yafolding
+(use-package yafolding
+  :ensure t
+  :hook (prog-mode . yafolding-mode)
+  :bind
+  (("M-h" . yafolding-hide-element)
+   ("M-s" . yafolding-show-element)
+   ("C-M-h" . yafolding-hide-all)
+   ("C-M-s" . yafolding-show-all)
+   ("C-S-h" . yafolding-hide-parent-element)
+   ("C-S-s" . yafolding-show-region)))
 
 (provide 'basic)
