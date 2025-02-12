@@ -19,3 +19,4 @@
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
+(global-display-line-numbers-mode t)
