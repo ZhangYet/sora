@@ -96,4 +96,11 @@
    ("C-S-h" . yafolding-hide-parent-element)
    ("C-S-s" . yafolding-show-region)))
 
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(setq-default whitespace-style
+              '(face spaces empty tabs newline trailing space-mark tab-mark newline-mark))
+(add-hook 'prog-mode-hook #'whitespace-mode)
+(electric-indent-mode -1)
+
 (provide 'basic)

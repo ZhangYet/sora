@@ -14,5 +14,10 @@
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 
+(setq c-default-style "gnu")
+(setq-default c-basic-offset 8
+	      tab-width 8
+	      indent-tabs-mode t)
+
 (provide 'rc-c)
 ;;;
