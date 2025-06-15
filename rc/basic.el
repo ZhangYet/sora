@@ -17,9 +17,23 @@
   :init
   (setq moe-theme-highlight-buffer-id t)
   :config
-  (load-theme 'moe-dark t))
+  (load-theme 'moe-light t))
 
-;; autocomplete
+(use-package tao-theme
+  :ensure t
+  :load-path "themes"
+  :pin melpa
+  :config
+  (load-theme 'tao-yang t))
+
+(use-package color-theme-modern
+  :ensure t
+  :load-path "themes"
+  :pin melpa
+  :config
+  (load-theme 'aalto-light t))
+
+;; Autocomplete
 ;; auto complete
 (use-package auto-complete
   :ensure t
