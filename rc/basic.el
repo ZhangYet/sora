@@ -13,25 +13,19 @@
 (use-package moe-theme
   :ensure t
   :load-path "themes"
-  :pin melpa
-  :init
-  (setq moe-theme-highlight-buffer-id t)
-  :config
-  (load-theme 'moe-light t))
+  :pin melpa)
 
 (use-package tao-theme
   :ensure t
   :load-path "themes"
-  :pin melpa
-  :config
-  (load-theme 'tao-yang t))
+  :pin melpa)
 
 (use-package color-theme-modern
   :ensure t
   :load-path "themes"
   :pin melpa
   :config
-  (load-theme 'aalto-light t))
+  (load-theme 'blue-mood t))
 
 ;; Autocomplete
 ;; auto complete
@@ -112,6 +106,8 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+(set-face-attribute 'whitespace-space nil
+		    :background nil :foreground "gray30")
 (setq-default whitespace-style
               '(face spaces empty tabs newline trailing space-mark tab-mark newline-mark))
 (add-hook 'prog-mode-hook #'whitespace-mode)
