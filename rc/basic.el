@@ -1,4 +1,4 @@
-;; linum and auto pair
+; Linum and auto pair
 (display-line-numbers-mode)
 (electric-pair-mode t)
 
@@ -10,7 +10,7 @@
   :bind ("C-x g" . magit-status))
 
 ;; theme
-(use-package moe-theme 
+(use-package moe-theme
   :ensure t
   :load-path "themes"
   :init
@@ -87,5 +87,7 @@
 (use-package elfeed
   :ensure t
   :bind (("C-x w" . 'elfeed)))
+
+(global-display-line-numbers-mode t)
 
 (provide 'basic)

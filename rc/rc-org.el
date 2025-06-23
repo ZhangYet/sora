@@ -27,7 +27,11 @@
   :bind (("C-c l" . 'org-store-link)
 	 ("C-c a" . 'org-agenda)
 	 ("C-c c" . 'org-capture)
-	 ("C-c s" . 'switch-todo-keywords)))
+	 ("C-c s" . 'switch-todo-keywords))
+  :hook ((org-mode . my/org-theme)))
+
+(defun my/org-theme ()
+  (load-theme 'tsdh-dark t))
 
 ;; (add-hook 'org-mode-hook 'turn-on-auto-fill)
 ;; (setq fill-column 120)
