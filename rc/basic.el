@@ -16,7 +16,14 @@
   :init
   (setq moe-theme-highlight-buffer-id t)
   :config
-  (load-theme 'moe-dark t))
+  (load-theme 'moe-light t))
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(setq-default whitespace-style
+              '(face spaces empty tabs newline trailing space-mark tab-mark newline-mark))
+(add-hook 'prog-mode-hook #'whitespace-mode)
+(electric-indent-mode -1)
 
 ;; autocomplete
 ;; auto complete
