@@ -12,6 +12,7 @@
 ;; load config
 (add-to-list 'load-path "~/.emacs.d/rc")
 (require 'basic)
+(require 'rc-basic)
 (require 'rc-c)
 (require 'rc-org)
 (require 'rc-file-management)
