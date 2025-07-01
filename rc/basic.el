@@ -106,11 +106,11 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(set-face-attribute 'whitespace-space nil
-		    :background nil :foreground "gray30")
 (setq-default whitespace-style
               '(face spaces empty tabs newline trailing space-mark tab-mark newline-mark))
 (add-hook 'prog-mode-hook #'whitespace-mode)
+(add-hook 'org-mode-hook #'whitespace-mode)
+
 (electric-indent-mode -1)
 
 (provide 'basic)
