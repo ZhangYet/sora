@@ -42,5 +42,7 @@ url/*
 
 # others
 .lsp-session-v1
+lspbridge/*
 projectile-bookmarks.eld
 tramp
+.mc-lists*
