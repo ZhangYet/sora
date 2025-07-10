@@ -16,7 +16,7 @@
   :init
   (setq moe-theme-highlight-buffer-id t)
   :config
-  (load-theme 'moe-light t))
+  (load-theme 'moe-dark t))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
