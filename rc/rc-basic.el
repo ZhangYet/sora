@@ -27,5 +27,33 @@
   (insert ";;;")
   (backward-char (+ (length provide-stat) 3)))
 
+(defun blog-tmpl (path)
+  "init a blog"
+  (interactive "spath: ")
+  (insert "#+HUGO_BASE_DIR: ../\n")
+  (insert (format "#+HUGO_SECTION: %s/posts\n" path))
+  (insert "#+hugo_auto_set_lastmod: t\n#+hugo_tags:\n")
+  (insert "#+hugo_categories:\n#+hugo_draft: true\n")
+  (insert "#+description:\n#+author: Dantezy\n#+date:\n")
+  (insert "#+TITLE:\n")
+  (backward-char 1))
+
+(defun j-tmpl ()
+  "init Socrates journal"
+  (interactive)
+  (setq q1 "   Q: 今天最开心的事情是什么？\n   A: \n")
+  (insert q1)
+  (setq q2 "\n   Q: 今天工作有什么进展吗？\n   A: \n")
+  (insert q2)
+  (setq q3 "\n   Q: 昨天计划做的事情没有什么进展吗？\n   A: \n")
+  (insert q3)
+  (setq q4 "\n   Q: 明天有什么计划吗？\n   A: \n")
+  (insert q4)
+  (setq q5 "\n   Q: 还有什么想说的吗？\n   A: \n")
+  (insert q5)
+  (setq bl (+ (length q5) (length q4) (length q3) (length q2) 1))
+  (backward-char bl)
+)
+
 (provide 'rc-basic)
 ;;;

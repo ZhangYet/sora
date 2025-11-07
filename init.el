@@ -18,6 +18,7 @@
 (require 'rc-file-management)
 (require 'rc-lsp)
 (require 'rc-mc)
+(require 'rc-wc)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
