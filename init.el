@@ -1,12 +1,29 @@
-;; melpa
+;; Package archives
 (require 'package)
+
+;; GNU ELPA (official Emacs package archive)
+(add-to-list 'package-archives
+             '("gnu" . "https://elpa.gnu.org/packages/") t)
+
+;; NonGNU ELPA (additional packages)
+(add-to-list 'package-archives
+             '("nongnu" . "https://elpa.nongnu.org/nongnu/") t)
+
+;; MELPA (unstable, latest versions)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/") t)
+
+;; MELPA Stable (stable versions)
 (add-to-list 'package-archives
-             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
-;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
-;; and `package-pinned-packages`. Most users will not need or want to do this.
-;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
+;; Set archive priorities (prefer stable over unstable)
+(setq package-archive-priorities
+      '(("gnu" . 10)
+        ("nongnu" . 9)
+        ("melpa-stable" . 8)
+        ("melpa" . 5)))
+
 (package-initialize)
 
 ;; load config

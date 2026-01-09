@@ -25,27 +25,49 @@
 
 (require 'use-package)
 
-;; Python mode
+;; Python mode (built-in, no :ensure needed)
 (use-package python
-  :ensure t
   :mode (("\\.py\\'" . python-mode))
+  :init
+  ;; Ensure global font-lock is enabled
+  (global-font-lock-mode 1)
   :config
   (setq python-indent-offset 4)
   (setq python-indent-guess-indent-offset t)
+  ;; Ensure font-lock is enabled for Python
+  (setq font-lock-maximum-decoration t)
   ;; Code navigation: M-. (forward) and M-, (backward)
   ;; xref is built-in and works with LSP
   :bind
   (:map python-mode-map
         ("M-." . xref-find-definitions)
         ("M-," . xref-pop-marker-stack)
-        ("C-c M-." . xref-find-references)))
+        ("C-c M-." . xref-find-references))
+  :hook
+  ;; Ensure syntax highlighting is enabled
+  (python-mode . (lambda ()
+                   ;; Enable font-lock (syntax highlighting)
+                   (font-lock-mode 1)
+                   (jit-lock-mode 1)
+                   ;; Force fontification of the entire buffer
+                   (font-lock-ensure)
+                   ;; Set font-lock level to maximum for better highlighting
+                   (setq font-lock-maximum-decoration t)
+                   ;; Ensure syntax table is set
+                   (syntax-ppss-flush-cache 0))))
 
-;; LSP for Python (pylsp or pyright)
-;; Note: lsp-mode is already configured in rc-lsp.el
+;; LSP for Python
+;; Add Python hook to lsp-mode (configured in rc-lsp.el)
 (use-package lsp-mode
   :ensure t
-  :after python
-  :hook (python-mode . lsp)
+  :after (python rc-lsp)
+  :hook (python-mode . (lambda ()
+                         ;; Start LSP
+                         (lsp-deferred)
+                         ;; Ensure xref uses LSP backend (lsp-mode should add this automatically,
+                         ;; but we ensure it's there)
+                         (when (boundp 'xref-backend-functions)
+                           (add-to-list 'xref-backend-functions 'lsp-xref-backend t))))
   :config
   ;; Configure LSP server (pylsp is recommended)
   ;; Install: pip install python-lsp-server[all]
@@ -53,11 +75,13 @@
   ;; Alternative: pyright
   ;; Install: npm install -g pyright
   ;; (setq lsp-python-ms-executable "pyright-langserver")
+  ;; (setq lsp-python-ms-extra-paths '())
+  ;; Ensure xref backend is registered globally
+  (add-to-list 'xref-backend-functions 'lsp-xref-backend t)
   )
 
-;; Code folding using hideshow (built-in)
+;; Code folding using hideshow (built-in, no :ensure needed)
 (use-package hideshow
-  :ensure t
   :hook (python-mode . hs-minor-mode)
   :bind
   (:map python-mode-map
@@ -129,4 +153,3 @@
 
 (provide 'rc-python)
 ;;;
-
