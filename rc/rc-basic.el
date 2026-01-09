@@ -45,15 +45,16 @@
   (insert q1)
   (setq q2 "\n   Q: 昨天工作有什么进展吗？\n   A: \n")
   (insert q2)
-  (setq q3 "\n   Q: 前天计划做的事情没有什么进展吗？\n   A: \n")
+  (setq q3 "\n   Q: 昨天计划做的事情没有什么进展吗？\n   A: \n")
   (insert q3)
-  (setq q4 "\n   Q: 今天有什么计划吗？\n   A: \n")
-  (insert q4)
-  (setq q5 "\n   Q: 还有什么想说的吗？\n   A: \n")
-  (insert q5)
-  (setq bl (+ (length q5) (length q4) (length q3) (length q2) 1))
-  (backward-char bl)
-)
+  (setq bl (+ (length q3) (length q2) 1))
+  (backward-char bl))
+
+(defun p-tmpl ()
+  "insert today's plan"
+  (interactive)
+  (setq q "** Today's plan\n*** ")
+  (insert q))
 
 (provide 'rc-basic)
 ;;;
