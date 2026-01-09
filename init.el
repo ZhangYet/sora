@@ -19,6 +19,7 @@
 (require 'rc-lsp)
 (require 'rc-mc)
 (require 'rc-wc)
+(require 'rc-python)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
