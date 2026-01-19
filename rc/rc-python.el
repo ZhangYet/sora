@@ -7,10 +7,10 @@
 ;;   C-c C-f      - Toggle code folding at point
 ;;   C-c C-s      - Show all folded code
 ;;   C-c C-h      - Hide all foldable code
-;;   C-c p s      - Search (grep) in project
+;;   Note: Project search is available globally (see rc-file-management.el):
+;;   C-c p s      - Search keyword in project (uses ripgrep if available)
 ;;   C-c p f      - Find file in project
 ;;   C-c p r      - Replace in project
-;;   C-c s        - Search with ripgrep (if installed)
 ;;
 ;; Dependencies to install:
 ;; 1. LSP server (choose one):
@@ -85,27 +85,8 @@
   ;; (setq flycheck-python-pylint-use-symbolic-id nil)
   )
 
-;; Project-wide search using projectile
-;; Projectile is already referenced in rc-file-management.el
-(use-package projectile
-  :ensure t
-  :after python
-  :config
-  (projectile-mode +1)
-  :bind
-  (:map python-mode-map
-        ("C-c p s" . projectile-grep)
-        ("C-c p f" . projectile-find-file)
-        ("C-c p r" . projectile-replace)))
-
-;; Alternative: ripgrep for faster search
-;; Install: brew install ripgrep (macOS) or apt-get install ripgrep (Linux)
-(use-package ripgrep
-  :ensure t
-  :after python
-  :bind
-  (:map python-mode-map
-        ("C-c s" . ripgrep-regexp)))
+;; Note: Project-wide search is configured globally in rc-file-management.el
+;; Use C-c p s for projectile-grep or C-c s for ripgrep-regexp
 
 ;; Company for auto-completion (already installed, but configure for Python)
 (use-package company
