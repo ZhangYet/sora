@@ -1,0 +1,155 @@
+;;; rc-python.el --- Python development configuration
+;;
+;; Keybindings:
+;;   M-.          - Go to definition (forward navigation)
+;;   M-,          - Go back (backward navigation)
+;;   C-c M-.      - Find all references to symbol at point
+;;   C-c C-f      - Toggle code folding at point
+;;   C-c C-s      - Show all folded code
+;;   C-c C-h      - Hide all foldable code
+;;   C-c p s      - Search (grep) in project
+;;   C-c p f      - Find file in project
+;;   C-c p r      - Replace in project
+;;   C-c s        - Search with ripgrep (if installed)
+;;
+;; Dependencies to install:
+;; 1. LSP server (choose one):
+;;    - pylsp: pip install python-lsp-server[all]
+;;    - pyright: npm install -g pyright
+;; 2. Flycheck checkers (choose one or both):
+;;    - flake8: pip install flake8
+;;    - pylint: pip install pylint
+;; 3. For ripgrep (optional, faster search):
+;;    - macOS: brew install ripgrep
+;;    - Linux: apt-get install ripgrep or yum install ripgrep
+
+(require 'use-package)
+
+;; Python mode (built-in, no :ensure needed)
+(use-package python
+  :mode (("\\.py\\'" . python-mode))
+  :init
+  ;; Ensure global font-lock is enabled
+  (global-font-lock-mode 1)
+  :config
+  (setq python-indent-offset 4)
+  (setq python-indent-guess-indent-offset t)
+  ;; Ensure font-lock is enabled for Python
+  (setq font-lock-maximum-decoration t)
+  ;; Code navigation: M-. (forward) and M-, (backward)
+  ;; xref is built-in and works with LSP
+  :bind
+  (:map python-mode-map
+        ("M-." . xref-find-definitions)
+        ("M-," . xref-pop-marker-stack)
+        ("C-c M-." . xref-find-references))
+  :hook
+  ;; Ensure syntax highlighting is enabled
+  (python-mode . (lambda ()
+                   ;; Enable font-lock (syntax highlighting)
+                   (font-lock-mode 1)
+                   (jit-lock-mode 1)
+                   ;; Force fontification of the entire buffer
+                   (font-lock-ensure)
+                   ;; Set font-lock level to maximum for better highlighting
+                   (setq font-lock-maximum-decoration t)
+                   ;; Ensure syntax table is set
+                   (syntax-ppss-flush-cache 0))))
+
+;; LSP for Python
+;; Add Python hook to lsp-mode (configured in rc-lsp.el)
+(use-package lsp-mode
+  :ensure t
+  :after (python rc-lsp)
+  :hook (python-mode . (lambda ()
+                         ;; Start LSP
+                         (lsp-deferred)
+                         ;; Ensure xref uses LSP backend (lsp-mode should add this automatically,
+                         ;; but we ensure it's there)
+                         (when (boundp 'xref-backend-functions)
+                           (add-to-list 'xref-backend-functions 'lsp-xref-backend t))))
+  :config
+  ;; Configure LSP server (pylsp is recommended)
+  ;; Install: pip install python-lsp-server[all]
+  (setq lsp-pylsp-server-command '("pylsp"))
+  ;; Alternative: pyright
+  ;; Install: npm install -g pyright
+  ;; (setq lsp-python-ms-executable "pyright-langserver")
+  ;; (setq lsp-python-ms-extra-paths '())
+  ;; Ensure xref backend is registered globally
+  (add-to-list 'xref-backend-functions 'lsp-xref-backend t)
+  )
+
+;; Code folding using hideshow (built-in, no :ensure needed)
+(use-package hideshow
+  :hook (python-mode . hs-minor-mode)
+  :bind
+  (:map python-mode-map
+        ("C-c C-f" . hs-toggle-hiding)
+        ("C-c C-s" . hs-show-all)
+        ("C-c C-h" . hs-hide-all)))
+
+;; Alternative: origami for more advanced folding
+;; (use-package origami
+;;   :ensure t
+;;   :hook (python-mode . origami-mode)
+;;   :bind
+;;   (:map python-mode-map
+;;         ("C-c C-f" . origami-toggle-node)
+;;         ("C-c C-s" . origami-open-all-nodes)
+;;         ("C-c C-h" . origami-close-all-nodes)))
+
+;; Flycheck for syntax checking
+;; Install: pip install flake8 (or pylint)
+(use-package flycheck
+  :ensure t
+  :hook (python-mode . flycheck-mode)
+  :config
+  ;; Use flake8 as checker (install: pip install flake8)
+  (setq flycheck-python-flake8-executable "flake8")
+  ;; Alternative: use pylint (install: pip install pylint)
+  ;; (setq flycheck-python-pylint-executable "pylint")
+  ;; (setq flycheck-python-pylint-use-symbolic-id nil)
+  )
+
+;; Project-wide search using projectile
+;; Projectile is already referenced in rc-file-management.el
+(use-package projectile
+  :ensure t
+  :after python
+  :config
+  (projectile-mode +1)
+  :bind
+  (:map python-mode-map
+        ("C-c p s" . projectile-grep)
+        ("C-c p f" . projectile-find-file)
+        ("C-c p r" . projectile-replace)))
+
+;; Alternative: ripgrep for faster search
+;; Install: brew install ripgrep (macOS) or apt-get install ripgrep (Linux)
+(use-package ripgrep
+  :ensure t
+  :after python
+  :bind
+  (:map python-mode-map
+        ("C-c s" . ripgrep-regexp)))
+
+;; Company for auto-completion (already installed, but configure for Python)
+(use-package company
+  :ensure t
+  :after python
+  :hook (python-mode . company-mode)
+  :config
+  (setq company-backends
+        (add-to-list 'company-backends 'company-capf)))
+
+;; Python-specific utilities
+(use-package pyvenv
+  :ensure t
+  :after python
+  :hook (python-mode . pyvenv-mode)
+  :config
+  (setq pyvenv-mode-line-indicator '(pyvenv-virtual-env-name (" [venv:" pyvenv-virtual-env-name "] "))))
+
+(provide 'rc-python)
+;;;
