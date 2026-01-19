@@ -26,6 +26,16 @@
 
 (package-initialize)
 
+;; Ensure use-package is installed (required for Emacs 30+)
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+;; Configure use-package
+(eval-when-compile
+  (require 'use-package))
+(setq use-package-always-ensure t)  ; Make :ensure t default
+
 ;; load config
 (add-to-list 'load-path "~/.emacs.d/rc")
 (require 'basic)

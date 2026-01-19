@@ -94,7 +94,11 @@
   (let ((done (or (not org-state) ;; nil when no TODO list
                   (member org-state org-done-keywords)))
         (file (buffer-file-name))
-        (agenda (funcall (ad-get-orig-definition 'org-agenda-files)) ))
+        ;; Get original org-agenda-files without advice
+        (agenda (progn
+                  (advice-remove 'org-agenda-files 'dynamic-agenda-files-advice)
+                  (prog1 (org-agenda-files)
+                    (advice-add 'org-agenda-files :filter-return #'dynamic-agenda-files-advice)))))
     (unless (member file agenda)
       (if done
           (save-excursion
