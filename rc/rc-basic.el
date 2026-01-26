@@ -8,12 +8,12 @@
 	     '(fullscreen . maximized))
 
 (when window-system
-    (set-frame-font (font-spec :family "Noto Sans Mono" :size 12))
+    (set-frame-font (font-spec :family "Noto Sans Mono" :size 18))
     (dolist (script '(han cjk-misc bopomofo))
         (set-fontset-font
             (frame-parameter nil 'font)
             script
-            (font-spec :name "Noto Sans CJK SC" :size 12))))
+            (font-spec :name "Noto Sans CJK SC" :size 18))))
 
 (setq-default line-spacing 4)
 

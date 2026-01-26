@@ -6,8 +6,8 @@
 (use-package lsp-mode
   :ensure t
   :init
-  ;; Set the prefix key for LSP commands
-  (setq lsp-keymap-prefix "C-c l")
+  ;; Set the prefix key for LSP commands (C-c L to avoid conflict with org-store-link)
+  (setq lsp-keymap-prefix "C-c L")
   ;; Performance optimizations
   (setq lsp-idle-delay 0.5)
   (setq lsp-log-io nil)

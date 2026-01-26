@@ -26,8 +26,18 @@
 
 (package-initialize)
 
+;; Ensure use-package is installed (required for Emacs 30+)
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+;; Configure use-package
+(eval-when-compile
+  (require 'use-package))
+(setq use-package-always-ensure t)  ; Make :ensure t default
+
 ;; load config
-(add-to-list 'load-path "~/.emacs.d/rc")
+(add-to-list 'load-path (expand-file-name "rc" user-emacs-directory))
 (require 'basic)
 (require 'rc-basic)
 (require 'rc-c)
@@ -38,5 +48,7 @@
 (require 'rc-wc)
 (require 'rc-python)
 
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
+;; Set custom file and load it if it exists
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file t))

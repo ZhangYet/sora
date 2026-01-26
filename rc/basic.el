@@ -1,5 +1,4 @@
-; Linum and auto pair
-(display-line-numbers-mode)
+; Auto pair
 (electric-pair-mode t)
 
 (require 'use-package)
@@ -25,18 +24,14 @@
 (add-hook 'prog-mode-hook #'whitespace-mode)
 (electric-indent-mode -1)
 
-;; autocomplete
-;; auto complete
-(use-package auto-complete
-  :ensure t)
-(setq ac-ignore-case nil)
-(add-hook 'emacs-lisp-mode-hook (lambda ()
-				  (auto-complete-mode t)
-				  (setq ac-sources (append ac-sources '(ac-source-functions)))))
+;; Company for auto-completion (modern replacement for auto-complete)
 (use-package company
   :ensure t
-  :init (add-hook 'after-init-hook 'global-company-mode))
-(ac-config-default)
+  :init
+  (add-hook 'after-init-hook 'global-company-mode)
+  :config
+  (setq company-idle-delay 0.5
+        company-minimum-prefix-length 2))
 
 
 (set-language-environment "UTF-8")
@@ -80,8 +75,7 @@
   :ensure t)
 (xclip-mode 1)
 
-;; trim space
-(add-hook 'write-file-hooks 'delete-trailing-whitespace nil t)
+;; trim space (already handled by before-save-hook above, but keep for compatibility)
 
 ;; rss
 (use-package elfeed
