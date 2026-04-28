@@ -45,7 +45,7 @@
   (insert q1)
   (setq q2 "\n   Q: 昨天工作有什么进展吗？\n   A: \n")
   (insert q2)
-  (setq q3 "\n   Q: 昨天计划做的事情没有什么进展吗？\n   A: \n")
+  (setq q3 "\n   Q: 昨天计划做的事情有什么进展吗？\n   A: \n")
   (insert q3)
   (setq bl (+ (length q3) (length q2) 1))
   (backward-char bl))

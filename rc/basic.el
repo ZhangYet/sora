@@ -6,7 +6,11 @@
 ;; magit
 (use-package magit
   :ensure t
-  :bind ("C-x g" . magit-status))
+  :bind ("C-x g" . magit-status)
+  :config
+  ;; Signed-off-by: add -s by default. If -s doesn't show in the commit
+  ;; popup (c c), press C-x l there to show more options (transient level).
+  (setq magit-commit-arguments '("--signoff")))
 
 ;; theme
 (use-package moe-theme
@@ -15,7 +19,7 @@
   :init
   (setq moe-theme-highlight-buffer-id t)
   :config
-  (load-theme 'moe-dark t))
+  (load-theme 'moe-light t))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
