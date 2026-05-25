@@ -20,7 +20,8 @@
    (c++-mode . lsp-deferred)
    (python-mode . lsp-deferred))
   :config
-  (add-to-list 'xref-backend-functions 'lsp-xref-backend))
+  (when (fboundp 'lsp-xref-backend)
+    (add-to-list 'xref-backend-functions 'lsp-xref-backend)))
 
 ;; lsp-ui - UI enhancements for LSP
 (use-package lsp-ui
