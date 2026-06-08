@@ -14,6 +14,15 @@
   :ensure t
   :hook (prog-mode . rainbow-delimiters-mode))
 
+;; Paredit — structured editing for Lisp
+(use-package paredit
+  :ensure t
+  :hook ((emacs-lisp-mode . paredit-mode)
+         (lisp-mode . paredit-mode)
+         (scheme-mode . paredit-mode))
+  :config
+  (setq paredit-use-hard-newlines nil))
+
 
 
 ;; Elisp formatting — indent whole buffer on save
