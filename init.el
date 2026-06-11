@@ -49,6 +49,7 @@
 (require 'rc-python)
 (require 'rc-tramp)
 (require 'rc-delimiters)
+(require 'rc-scheme)
 
 ;; Set custom file and load it if it exists
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))

@@ -7,6 +7,8 @@
 (add-to-list 'default-frame-alist
 	     '(fullscreen . maximized))
 
+(add-hook 'window-setup-hook #'toggle-frame-maximized)
+
 (when window-system
     (ignore-errors
       (set-frame-font (font-spec :family "Noto Sans Mono" :size 18))
