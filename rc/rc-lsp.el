@@ -6,26 +6,33 @@
 (use-package lsp-mode
   :ensure t
   :init
-  ;; Set the prefix key for LSP commands
-  (setq lsp-keymap-prefix "C-c l")
-  ;; Performance optimizations
-  (setq lsp-idle-delay 0.5)
+  (setq lsp-keymap-prefix "C-c L")
+  (setq lsp-idle-delay 0.3)
   (setq lsp-log-io nil)
   (setq lsp-enable-snippet nil)
-  :commands (lsp lsp-deferred)
-  :hook
-  ;; Enable LSP for shell scripts
-  (sh-mode . lsp)
-  ;; Optional: Enable origami folding if available
-  (lsp-after-open-hook . (lambda ()
-                           (when (fboundp 'lsp-origami-try-enable)
-                             (lsp-origami-try-enable))))
-  :config
-  ;; General LSP settings
   (setq lsp-auto-guess-root t)
   (setq lsp-restart 'auto-restart)
-  ;; Configure xref to use LSP backend
-  (add-to-list 'xref-backend-functions 'lsp-xref-backend))
+  (setq lsp-completion-provider :capf)
+  :commands (lsp lsp-deferred)
+  :hook
+  ((sh-mode . lsp)
+   (c-mode . lsp-deferred)
+   (c++-mode . lsp-deferred)
+   (python-mode . lsp-deferred))
+  :config
+  (when (fboundp 'lsp-xref-backend)
+    (add-to-list 'xref-backend-functions 'lsp-xref-backend)))
+
+;; lsp-ui - UI enhancements for LSP
+(use-package lsp-ui
+  :ensure t
+  :config
+  (setq lsp-ui-doc-enable t
+        lsp-ui-doc-position 'at-point
+        lsp-ui-sideline-enable t
+        lsp-ui-sideline-show-hover t)
+  :bind (:map lsp-mode-map
+              ("C-c L d" . lsp-ui-doc-show)))
 
 (provide 'rc-lsp)
 ;;;

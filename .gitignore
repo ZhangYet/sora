@@ -46,3 +46,5 @@ lspbridge/*
 projectile-bookmarks.eld
 tramp
 .mc-lists*
+eln-cache
+projects

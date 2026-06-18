@@ -7,13 +7,16 @@
 (add-to-list 'default-frame-alist
 	     '(fullscreen . maximized))
 
+(add-hook 'window-setup-hook #'toggle-frame-maximized)
+
 (when window-system
-    (set-frame-font (font-spec :family "Noto Sans Mono" :size 12))
-    (dolist (script '(han cjk-misc bopomofo))
+    (ignore-errors
+      (set-frame-font (font-spec :family "Noto Sans Mono" :size 18))
+      (dolist (script '(han cjk-misc bopomofo))
         (set-fontset-font
-            (frame-parameter nil 'font)
-            script
-            (font-spec :name "Noto Sans CJK SC" :size 12))))
+         (frame-parameter nil 'font)
+         script
+         (font-spec :name "Noto Sans CJK SC" :size 18)))))
 
 (setq-default line-spacing 4)
 
@@ -45,7 +48,7 @@
   (insert q1)
   (setq q2 "\n   Q: 昨天工作有什么进展吗？\n   A: \n")
   (insert q2)
-  (setq q3 "\n   Q: 昨天计划做的事情没有什么进展吗？\n   A: \n")
+  (setq q3 "\n   Q: 昨天计划做的事情有什么进展吗？\n   A: \n")
   (insert q3)
   (setq bl (+ (length q3) (length q2) 1))
   (backward-char bl))

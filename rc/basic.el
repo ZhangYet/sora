@@ -1,5 +1,4 @@
-; Linum and auto pair
-(display-line-numbers-mode)
+; Auto pair
 (electric-pair-mode t)
 
 (require 'use-package)
@@ -7,7 +6,11 @@
 ;; magit
 (use-package magit
   :ensure t
-  :bind ("C-x g" . magit-status))
+  :bind ("C-x g" . magit-status)
+  :config
+  ;; Signed-off-by: add -s by default. If -s doesn't show in the commit
+  ;; popup (c c), press C-x l there to show more options (transient level).
+  (setq magit-commit-arguments '("--signoff")))
 
 ;; theme
 (use-package moe-theme
@@ -16,7 +19,7 @@
   :init
   (setq moe-theme-highlight-buffer-id t)
   :config
-  (load-theme 'moe-dark t))
+  (load-theme 'moe-light t))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -25,18 +28,14 @@
 (add-hook 'prog-mode-hook #'whitespace-mode)
 (electric-indent-mode -1)
 
-;; autocomplete
-;; auto complete
-(use-package auto-complete
-  :ensure t)
-(setq ac-ignore-case nil)
-(add-hook 'emacs-lisp-mode-hook (lambda ()
-				  (auto-complete-mode t)
-				  (setq ac-sources (append ac-sources '(ac-source-functions)))))
+;; Company for auto-completion (modern replacement for auto-complete)
 (use-package company
   :ensure t
-  :init (add-hook 'after-init-hook 'global-company-mode))
-(ac-config-default)
+  :init
+  (add-hook 'after-init-hook 'global-company-mode)
+  :config
+  (setq company-idle-delay 0.5
+        company-minimum-prefix-length 2))
 
 
 (set-language-environment "UTF-8")
@@ -80,8 +79,7 @@
   :ensure t)
 (xclip-mode 1)
 
-;; trim space
-(add-hook 'write-file-hooks 'delete-trailing-whitespace nil t)
+;; trim space (already handled by before-save-hook above, but keep for compatibility)
 
 ;; rss
 (use-package elfeed
